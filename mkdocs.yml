@@ -10,9 +10,6 @@ repo_url: https://github.com/skand21/KITON-DOCS
 # Навигация
 nav:
   - Главная: index.md
-  - Установка и настройка: install.md
-  - Команды и функции: commands.md
-  - API и техническая документация: api.md
 
 # Тема
 theme:
