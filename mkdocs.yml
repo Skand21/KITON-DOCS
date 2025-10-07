@@ -1,0 +1,54 @@
+site_name: Документация Telegram-бота
+site_description: Полная документация по Telegram-боту для организации взаимодействия между учениками, репетиторами и родителями
+site_author: Kiton Team
+site_url: https://skand21.github.io/KITON-DOCS
+
+# Репозиторий
+repo_name: skand21/KITON-DOCS
+repo_url: https://github.com/skand21/KITON-DOCS
+
+# Навигация
+nav:
+  - Главная: index.md
+  - Установка и настройка: install.md
+  - Команды и функции: commands.md
+  - API и техническая документация: api.md
+
+# Тема
+theme:
+  name: material
+  language: ru
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+    - scheme: slate
+      primary: blue
+      accent: light blue
+  features:
+    - navigation.tabs
+    - search.highlight
+    - content.code.copy
+
+# Плагины
+plugins:
+  - search:
+      lang: ru
+
+# Дополнительные настройки
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+
+# Дополнительные файлы
+extra:
+  social:
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/kiton_support
+    - icon: fontawesome/brands/github
+      link: https://github.com/skand21/KITON-DOCS
