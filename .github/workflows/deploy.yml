@@ -2,6 +2,10 @@ name: Deploy Bot
 on:
   push:
     branches: [main]
+    paths:
+      - '!docs/**'
+      - '!mkdocs.yml'
+      - '!*.md'
 
 jobs:
   deploy:
