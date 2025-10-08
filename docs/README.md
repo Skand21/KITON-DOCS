@@ -82,4 +82,5 @@ mkdocs serve
 
 - 📚 [База знаний](https://your-knowledge-base.com)
 - 💬 [Поддержка в Telegram](https://t.me/kiton_support)
+- 🤖 [Бот KITON](https://t.me/tutor_auto_bot)
 - 🐛 [Сообщить об ошибке](https://github.com/your-repo/issues)
