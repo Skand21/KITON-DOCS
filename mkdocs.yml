@@ -1,31 +1,51 @@
-site_name: Документация Telegram-бота
+site_name: Главная
 site_description: Полная документация по Telegram-боту для организации взаимодействия между учениками, репетиторами и родителями
 site_author: Kiton Team
 site_url: https://skand21.github.io/KITON-DOCS
 
-# Репозиторий
-repo_name: skand21/KITON-DOCS
-repo_url: https://github.com/skand21/KITON-DOCS
+# Репозиторий скрыт
 
 # Навигация
 nav:
   - Главная: index.md
+  - FAQ: faq.md
+  - Гайды:
+    - Репетиторы: tutor-guide.md
+    - Ученики: student-guide.md
+    - Родители: parent-guide.md
+  - База знаний:
+    - Для репетиторов: knowledge-base-tutor.md
+    - Для учеников: knowledge-base-student.md
+    - Для родителей: knowledge-base-parent.md
+  - Тарифы: tariffs.md
 
 # Тема
 theme:
   name: material
   language: ru
+  custom_dir: docs/overrides
   palette:
-    - scheme: default
-      primary: blue
-      accent: light blue
     - scheme: slate
       primary: blue
       accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Переключить на светлую тему
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Переключить на темную тему
   features:
     - navigation.tabs
+    - navigation.sections
+    - navigation.top
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.action.edit
+    - content.action.view
 
 # Плагины
 plugins:
@@ -42,6 +62,10 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# Исключаем README.md из сборки
+exclude_docs: |
+  README.md
+
 # Дополнительные файлы
 extra:
   social:
@@ -49,3 +73,13 @@ extra:
       link: https://t.me/kiton_support
     - icon: fontawesome/brands/github
       link: https://github.com/skand21/KITON-DOCS
+  last_updated: "2025-01-09"
+  css:
+    - extra.css
+  js:
+    - javascripts/force-dark-theme.js
+    - javascripts/auto-theme.js
+    - javascripts/progress.js
+    - javascripts/search-enhancement.js
+    - javascripts/color-picker.js
+    - javascripts/hide-anchors.js

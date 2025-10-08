@@ -1,0 +1,2280 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Полная документация по Telegram-боту для организации взаимодействия между учениками, репетиторами и родителями">
+      
+      
+        <meta name="author" content="Kiton Team">
+      
+      
+        <link rel="canonical" href="https://skand21.github.io/KITON-DOCS/knowledge-base-parent/">
+      
+      
+        <link rel="prev" href="../knowledge-base-student/">
+      
+      
+        <link rel="next" href="../tariffs/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Для родителей - Документация Telegram-бота</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<style>
+/* Убираем "Made with Material" */
+.md-footer-meta {
+    display: none !important;
+}
+
+/* Стили для нашего кастомного футера */
+.custom-footer {
+    background-color: #2c3e50 !important;
+    padding: 30px 0 !important;
+    margin-top: 50px !important;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Левая часть - информация о проекте */
+.footer-left {
+    justify-self: start;
+}
+
+.footer-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-version {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer-date {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Правая часть - ссылки поддержки */
+.footer-right {
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 200px;
+}
+
+.footer-support-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    text-align: right;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    backdrop-filter: blur(10px);
+    min-width: 80px;
+}
+
+.footer-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.footer-text {
+    font-weight: 500;
+}
+
+.footer-icon {
+    font-size: 16px;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-left {
+        justify-self: center;
+    }
+    
+    .footer-right {
+        justify-self: center;
+        align-items: center;
+    }
+    
+    .footer-title {
+        font-size: 24px;
+    }
+    
+    .footer-version {
+        font-size: 15px;
+    }
+    
+    .footer-date {
+        font-size: 13px;
+    }
+    
+    .footer-meta {
+        align-items: center;
+    }
+    
+    .footer-support-title {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+    
+    .footer-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .footer-link {
+        padding: 12px;
+        min-width: 50px;
+        justify-content: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .footer-text {
+        display: none;
+    }
+    
+    .footer-icon {
+        font-size: 20px;
+    }
+}
+
+/* Темная тема */
+[data-md-color-scheme="slate"] .custom-footer {
+    background-color: #2c3e50 !important;
+}
+
+[data-md-color-scheme="slate"] .footer-link {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+[data-md-color-scheme="slate"] .footer-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Убираем символы ¶ - более сильные правила */
+.md-content__inner h1::after,
+.md-content__inner h2::after,
+.md-content__inner h3::after,
+.md-content__inner h4::after,
+.md-content__inner h5::after,
+.md-content__inner h6::after,
+.md-content h1::after,
+.md-content h2::after,
+.md-content h3::after,
+.md-content h4::after,
+.md-content h5::after,
+.md-content h6::after,
+h1::after,
+h2::after,
+h3::after,
+h4::after,
+h5::after,
+h6::after,
+.md-content__inner h1 a,
+.md-content__inner h2 a,
+.md-content__inner h3 a,
+.md-content__inner h4 a,
+.md-content__inner h5 a,
+.md-content__inner h6 a,
+.md-content h1 a,
+.md-content h2 a,
+.md-content h3 a,
+.md-content h4 a,
+.md-content h5 a,
+.md-content h6 a {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Делаем текст светлее на темном фоне */
+[data-md-color-scheme="slate"] {
+    --md-default-fg-color: rgba(255, 255, 255, 0.9) !important;
+    --md-default-fg-color--light: rgba(255, 255, 255, 0.8) !important;
+    --md-default-fg-color--lighter: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Принудительно делаем текст светлее */
+[data-md-color-scheme="slate"] .md-content,
+[data-md-color-scheme="slate"] .md-content p,
+[data-md-color-scheme="slate"] .md-content li,
+[data-md-color-scheme="slate"] .md-content div {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-md-color-scheme="slate"] .md-content h1,
+[data-md-color-scheme="slate"] .md-content h2,
+[data-md-color-scheme="slate"] .md-content h3,
+[data-md-color-scheme="slate"] .md-content h4,
+[data-md-color-scheme="slate"] .md-content h5,
+[data-md-color-scheme="slate"] .md-content h6 {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Стили для левой панели */
+.md-sidebar--primary {
+    background-color: #2a2a2a !important;
+}
+
+.md-sidebar--primary .md-nav__title {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 16px 20px !important;
+    background: linear-gradient(135deg, #4a90e2, #357abd) !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+.md-sidebar--primary .md-nav__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.md-sidebar--primary .md-nav__link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 12px 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.md-sidebar--primary .md-nav__link:hover {
+    color: #4a90e2 !important;
+    background-color: rgba(74, 144, 226, 0.1) !important;
+}
+
+.md-sidebar--primary .md-nav__link--active {
+    color: #4a90e2 !important;
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-left: 3px solid #4a90e2 !important;
+}
+
+/* Стили для верхнего меню */
+.md-header {
+    background-color: #34495e !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+.md-header__title {
+    font-weight: 700 !important;
+}
+
+.md-header__title::before {
+    content: "KITON ";
+    color: #3498db;
+    font-weight: 800;
+}
+
+/* Стили для навигационных вкладок */
+.md-tabs {
+    background-color: #2c3e50 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.md-tabs__link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s ease !important;
+}
+
+.md-tabs__link:hover {
+    color: #3498db !important;
+    background-color: rgba(52, 152, 219, 0.1) !important;
+}
+
+.md-tabs__link--active {
+    color: #3498db !important;
+    background-color: rgba(52, 152, 219, 0.15) !important;
+    border-bottom: 2px solid #3498db !important;
+}
+
+</style>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href=".." title="Документация Telegram-бота" class="md-header__button md-logo" aria-label="Документация Telegram-бота" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Документация Telegram-бота
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Для родителей
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Переключить на темную тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на темную тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Поделиться" aria-label="Поделиться" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tutor-guide/" class="md-tabs__link">
+          
+  
+  
+  Гайды
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../knowledge-base-tutor/" class="md-tabs__link">
+          
+  
+  
+  База знаний
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tariffs/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Тарифы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Документация Telegram-бота" class="md-nav__button md-logo" aria-label="Документация Telegram-бота" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Документация Telegram-бота
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Главная
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Гайды
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Гайды
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Репетиторы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../student-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ученики
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parent-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Родители
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    База знаний
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            База знаний
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-tutor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Для репетиторов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-student/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Для учеников
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Для родителей
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Для родителей
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      👨‍👩‍👧 Контролируйте обучение вашего ребенка!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      📱 Первые шаги
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 Первые шаги">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Регистрация в боте
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение к ребенку
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      👶 Управление детьми
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👶 Управление детьми">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр информации о ребенке
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Добавление нескольких детей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление связями
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Контроль домашних заданий
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Контроль домашних заданий">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр заданий
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Отслеживание выполнения
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Анализ успеваемости
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поддержка ребенка
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      📅 Контроль расписания
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📅 Контроль расписания">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр занятий
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Планирование времени
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление расписанием
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 Финансовое управление
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💰 Финансовое управление">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль оплат
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пополнение баланса
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Финансовое планирование
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль эффективности
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Отслеживание прогресса
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Отслеживание прогресса">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общая статистика
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Анализ по предметам
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сравнение периодов
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Рекомендации
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Настройки и профиль
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Настройки и профиль">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Редактирование профиля
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройки уведомлений
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление детьми
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Безопасность
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Советы для родителей
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Советы для родителей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поддержка ребенка
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль без давления
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с репетитором
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      Финансовое планирование
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ Часто задаваемые вопросы
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ Часто задаваемые вопросы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      Как подключить несколько детей?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      Можно ли видеть все данные ребенка?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      Как пополнить баланс?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что делать, если ребенок не выполняет ДЗ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      Можно ли изменить репетитора?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      📞 Поддержка
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tariffs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Тарифы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      👨‍👩‍👧 Контролируйте обучение вашего ребенка!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      📱 Первые шаги
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 Первые шаги">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Регистрация в боте
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение к ребенку
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      👶 Управление детьми
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👶 Управление детьми">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр информации о ребенке
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Добавление нескольких детей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление связями
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Контроль домашних заданий
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Контроль домашних заданий">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр заданий
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Отслеживание выполнения
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Анализ успеваемости
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поддержка ребенка
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      📅 Контроль расписания
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📅 Контроль расписания">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр занятий
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Планирование времени
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление расписанием
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      💰 Финансовое управление
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💰 Финансовое управление">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль оплат
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пополнение баланса
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Финансовое планирование
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль эффективности
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Отслеживание прогресса
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Отслеживание прогресса">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общая статистика
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Анализ по предметам
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сравнение периодов
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Рекомендации
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Настройки и профиль
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Настройки и профиль">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Редактирование профиля
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройки уведомлений
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Управление детьми
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Безопасность
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Советы для родителей
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Советы для родителей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поддержка ребенка
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Контроль без давления
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с репетитором
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      Финансовое планирование
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ Часто задаваемые вопросы
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ Часто задаваемые вопросы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      Как подключить несколько детей?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      Можно ли видеть все данные ребенка?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      Как пополнить баланс?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что делать, если ребенок не выполняет ДЗ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      Можно ли изменить репетитора?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      📞 Поддержка
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">📚 База знаний для родителей<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">👨‍👩‍👧 Контролируйте обучение вашего ребенка!<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Этот раздел поможет вам максимально эффективно использовать бот для контроля успеваемости и поддержки образовательного процесса вашего ребенка.</p>
+<hr />
+<h2 id="_3">📱 Первые шаги<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">Регистрация в боте<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Запустите бота командой <code>/start</code></li>
+<li>Нажмите <strong>"✅ Продолжить"</strong></li>
+<li>Выберите роль <strong>"👨‍👩‍👧 Родитель"</strong></li>
+<li>Заполните свой профиль:</li>
+<li>Имя и фамилия</li>
+<li>Телефон</li>
+</ol>
+<h3 id="_5">Подключение к ребенку<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Получите <strong>персональный код</strong> от вашего ребенка</li>
+<li>Перейдите в раздел <strong>"👶 Дети"</strong></li>
+<li>Нажмите <strong>"➕ Добавить ребенка"</strong></li>
+<li>Введите персональный код</li>
+<li>Система автоматически создаст связь</li>
+</ol>
+<p><strong>⚠️ Важно</strong>: Код можно получить только от самого ребенка после его регистрации в боте.</p>
+<hr />
+<h2 id="_6">👶 Управление детьми<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">Просмотр информации о ребенке<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>После подключения вы увидите:
+- <strong>📊 Общий прогресс</strong> - статистика по всем предметам
+- <strong>📚 Количество ДЗ</strong> - выдано и выполнено
+- <strong>⭐️ Средний балл</strong> - успеваемость по предметам
+- <strong>🏆 Газики</strong> - заработанные баллы
+- <strong>👨🏫 Репетиторы</strong> - кто занимается с ребенком</p>
+<h3 id="_8">Добавление нескольких детей<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>Если у вас несколько детей:
+1. Получите код от каждого ребенка
+2. Добавьте каждого отдельно
+3. Переключайтесь между детьми в меню
+4. Отслеживайте прогресс каждого</p>
+<h3 id="_9">Управление связями<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📞 Связь с репетиторами</strong> - прямое общение</li>
+<li><strong>📊 Просмотр статистики</strong> - детальная аналитика</li>
+<li><strong>💰 Финансовый контроль</strong> - управление оплатами</li>
+<li><strong>📅 Планирование</strong> - контроль расписания</li>
+</ul>
+<hr />
+<h2 id="_10">📚 Контроль домашних заданий<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">Просмотр заданий<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>В разделе <strong>"📚 Домашние задания"</strong> вы увидите:
+- <strong>📝 Текущие задания</strong> - что задано на дом
+- <strong>📊 Статус выполнения</strong> - выполнено ли задание
+- <strong>⭐️ Оценки</strong> - баллы за проверенные работы
+- <strong>💬 Комментарии</strong> - замечания репетитора</p>
+<h3 id="_12">Отслеживание выполнения<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>🔔 Уведомления</strong> о новых заданиях</li>
+<li><strong>📈 Прогресс выполнения</strong> в реальном времени</li>
+<li><strong>⏰ Сроки сдачи</strong> - не пропустите дедлайны</li>
+<li><strong>📊 История ДЗ</strong> - все задания за период</li>
+</ul>
+<h3 id="_13">Анализ успеваемости<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📈 Динамика оценок</strong> - как улучшается успеваемость</li>
+<li><strong>📚 По предметам</strong> - где есть проблемы</li>
+<li><strong>⏰ По времени</strong> - как меняется прогресс</li>
+<li><strong>🎯 Рекомендации</strong> - что нужно улучшить</li>
+</ul>
+<h3 id="_14">Поддержка ребенка<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>💬 Обсуждение заданий</strong> - помогайте ребенку</li>
+<li><strong>📊 Анализ ошибок</strong> - разбирайте вместе</li>
+<li><strong>🎯 Постановка целей</strong> - планируйте улучшения</li>
+<li><strong>🏆 Поощрение успехов</strong> - мотивируйте ребенка</li>
+</ul>
+<hr />
+<h2 id="_15">📅 Контроль расписания<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">Просмотр занятий<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>В разделе <strong>"📅 Занятия"</strong> вы увидите:
+- <strong>🕐 Время занятий</strong> - когда проходят уроки
+- <strong>👨🏫 Репетиторов</strong> - кто проводит занятия
+- <strong>📚 Предметы</strong> - что изучается
+- <strong>⏱️ Длительность</strong> - сколько времени занимает</p>
+<h3 id="_17">Планирование времени<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📅 Недельное расписание</strong> - планируйте время</li>
+<li><strong>⏰ Напоминания</strong> - не пропустите занятия</li>
+<li><strong>🔄 Изменения</strong> - отслеживайте переносы</li>
+<li><strong>📊 Статистика</strong> - сколько часов в неделю</li>
+</ul>
+<h3 id="_18">Управление расписанием<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📞 Связь с репетитором</strong> - обсуждение изменений</li>
+<li><strong>⏰ Перенос занятий</strong> - при необходимости</li>
+<li><strong>📅 Дополнительные уроки</strong> - по запросу</li>
+<li><strong>🎯 Оптимизация</strong> - лучшее время для занятий</li>
+</ul>
+<hr />
+<h2 id="_19">💰 Финансовое управление<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<h3 id="_20">Контроль оплат<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>В разделе <strong>"💳 Оплаты"</strong> вы увидите:
+- <strong>💰 Текущий баланс</strong> - сколько часов у ребенка
+- <strong>📊 История платежей</strong> - все оплаты за период
+- <strong>⏰ Оставшиеся часы</strong> - сколько занятий осталось
+- <strong>📈 Статистика расходов</strong> - анализ трат</p>
+<h3 id="_21">Пополнение баланса<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Выберите способ оплаты</strong>:</li>
+<li>Банковская карта</li>
+<li>Электронные деньги</li>
+<li>Банковский перевод</li>
+<li><strong>Укажите сумму</strong> - сколько часов покупаете</li>
+<li><strong>Подтвердите платеж</strong> - безопасная оплата</li>
+<li><strong>Часы зачислятся</strong> автоматически</li>
+</ol>
+<h3 id="_22">Финансовое планирование<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📊 Анализ расходов</strong> - сколько тратите на обучение</li>
+<li><strong>📅 Планирование бюджета</strong> - на месяц/квартал</li>
+<li><strong>💰 Оптимизация трат</strong> - как сэкономить</li>
+<li><strong>🎯 Цели</strong> - копить на дополнительные занятия</li>
+</ul>
+<h3 id="_23">Контроль эффективности<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📈 ROI обучения</strong> - окупаемость инвестиций</li>
+<li><strong>📊 Сравнение результатов</strong> - до/после занятий</li>
+<li><strong>🎯 Анализ прогресса</strong> - стоит ли продолжать</li>
+<li><strong>💡 Рекомендации</strong> - как улучшить результаты</li>
+</ul>
+<hr />
+<h2 id="_24">📈 Отслеживание прогресса<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<h3 id="_25">Общая статистика<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📊 Успеваемость</strong> - общие показатели</li>
+<li><strong>📈 Динамика</strong> - как улучшается прогресс</li>
+<li><strong>🎯 Достижения</strong> - что уже освоено</li>
+<li><strong>📚 Проблемные зоны</strong> - что нужно подтянуть</li>
+</ul>
+<h3 id="_26">Анализ по предметам<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📚 Математика</strong> - успехи в точных науках</li>
+<li><strong>📖 Русский язык</strong> - грамотность и письмо</li>
+<li><strong>🌍 Иностранные языки</strong> - языковые навыки</li>
+<li><strong>🔬 Естественные науки</strong> - физика, химия, биология</li>
+</ul>
+<h3 id="_27">Сравнение периодов<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📅 По месяцам</strong> - как растет успеваемость</li>
+<li><strong>📊 По четвертям</strong> - сезонные изменения</li>
+<li><strong>🎯 По целям</strong> - достижение поставленных задач</li>
+<li><strong>📈 Тренды</strong> - долгосрочная динамика</li>
+</ul>
+<h3 id="_28">Рекомендации<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>💡 Советы репетитора</strong> - как улучшить результаты</li>
+<li><strong>🎯 Постановка целей</strong> - к чему стремиться</li>
+<li><strong>📚 Дополнительные материалы</strong> - что изучить</li>
+<li><strong>⏰ Оптимизация времени</strong> - как лучше учиться</li>
+</ul>
+<hr />
+<h2 id="_29">🔧 Настройки и профиль<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<h3 id="_30">Редактирование профиля<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>Вы можете изменить:
+- <strong>👤 Имя и фамилию</strong>
+- <strong>📱 Телефон</strong>
+- <strong>📧 Email</strong> (если добавлен)
+- <strong>🌍 Часовой пояс</strong></p>
+<h3 id="_31">Настройки уведомлений<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>🔔 Новые задания</strong> - уведомления о ДЗ</li>
+<li><strong>⭐️ Проверенные работы</strong> - оценки и комментарии</li>
+<li><strong>📅 Предстоящие занятия</strong> - напоминания</li>
+<li><strong>💰 Финансовые операции</strong> - платежи и баланс</li>
+</ul>
+<h3 id="_32">Управление детьми<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>👶 Добавление детей</strong> - подключение новых</li>
+<li><strong>🔄 Переключение</strong> - между профилями детей</li>
+<li><strong>📊 Сравнение</strong> - успеваемость разных детей</li>
+<li><strong>🎯 Индивидуальные цели</strong> - для каждого ребенка</li>
+</ul>
+<h3 id="_33">Безопасность<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>🔐 Защита данных</strong> - ваша информация в безопасности</li>
+<li><strong>👥 Контроль доступа</strong> - кто может видеть данные</li>
+<li><strong>📱 Безопасность аккаунта</strong> - защита от взлома</li>
+<li><strong>🔄 Резервное копирование</strong> - данные сохранены</li>
+</ul>
+<hr />
+<h2 id="_34">💡 Советы для родителей<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<h3 id="_35">Поддержка ребенка<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>💬 Общайтесь</strong> - обсуждайте учебу и прогресс</li>
+<li><strong>🏆 Поощряйте</strong> - отмечайте достижения</li>
+<li><strong>🎯 Помогайте ставить цели</strong> - планируйте улучшения</li>
+<li><strong>📚 Создавайте мотивацию</strong> - заинтересовывайте учебой</li>
+</ul>
+<h3 id="_36">Контроль без давления<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📊 Отслеживайте прогресс</strong> - но не давите</li>
+<li><strong>💡 Предлагайте помощь</strong> - но не делайте за ребенка</li>
+<li><strong>🎯 Ставьте реалистичные цели</strong> - не завышайте ожидания</li>
+<li><strong>🏆 Цените усилия</strong> - не только результаты</li>
+</ul>
+<h3 id="_37">Работа с репетитором<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>📞 Поддерживайте связь</strong> - обсуждайте прогресс</li>
+<li><strong>🎯 Совместное планирование</strong> - ставьте общие цели</li>
+<li><strong>📊 Анализируйте результаты</strong> - корректируйте подход</li>
+<li><strong>💡 Обменивайтесь опытом</strong> - делитесь наблюдениями</li>
+</ul>
+<h3 id="_38">Финансовое планирование<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>💰 Планируйте бюджет</strong> - на обучение заранее</li>
+<li><strong>📊 Анализируйте эффективность</strong> - окупаются ли вложения</li>
+<li><strong>🎯 Ставьте приоритеты</strong> - что важнее для ребенка</li>
+<li><strong>💡 Ищите возможности</strong> - скидки, акции, пакеты</li>
+</ul>
+<hr />
+<h2 id="_39">❓ Часто задаваемые вопросы<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h2>
+<h3 id="_40">Как подключить несколько детей?<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>Получите персональный код от каждого ребенка и добавьте их отдельно. Вы сможете переключаться между профилями.</p>
+<h3 id="_41">Можно ли видеть все данные ребенка?<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<p>Да, после подключения вы видите всю информацию: задания, оценки, расписание, финансы.</p>
+<h3 id="_42">Как пополнить баланс?<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<p>Используйте раздел "Оплаты" в боте. Доступны различные способы оплаты.</p>
+<h3 id="_43">Что делать, если ребенок не выполняет ДЗ?<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<p>Обсудите проблему с репетитором через бот. Возможно, нужно скорректировать подход или нагрузку.</p>
+<h3 id="_44">Можно ли изменить репетитора?<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<p>Да, вы можете обсудить это с текущим репетитором или найти нового через систему.</p>
+<hr />
+<h2 id="_45">📞 Поддержка<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
+<p>Если у вас возникли вопросы:
+- <strong>💬 Чат поддержки</strong>: t.me/kiton_support
+- <strong>📢 Канал обновлений</strong>: t.me/kiton_channel
+- <strong>❓ Помощь в боте</strong>: нажмите кнопку "Помощь"
+- <strong>📧 Email</strong>: support@kiton.ru</p>
+<hr />
+<p><em>Помогите своему ребенку достичь успехов в учебе с помощью нашего бота!</em> 🌟</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+<!-- Кастомный футер с правильным расположением -->
+<footer class="md-footer custom-footer">
+  <div class="footer-container">
+    <!-- Левая часть - информация о проекте -->
+    <div class="footer-left">
+      <h3 class="footer-title">KITON Documentation</h3>
+      <div class="footer-meta">
+        <span class="footer-version">v1.2.0</span>
+        <span class="footer-date">Обновлено: 2025-01-09</span>
+      </div>
+    </div>
+    
+    <!-- Правая часть - ссылки поддержки -->
+    <div class="footer-right">
+      <div class="footer-links">
+        <a href="https://t.me/kiton_support" class="footer-link" title="Поддержка" target="_blank" rel="noopener">
+          <span class="footer-icon">💬</span>
+          <span class="footer-text">Поддержка</span>
+        </a>
+        <a href="https://t.me/kiton_bot" class="footer-link" title="Бот KITON" target="_blank" rel="noopener">
+          <span class="footer-icon">🤖</span>
+          <span class="footer-text">Бот</span>
+        </a>
+        <a href="https://t.me/kiton_channel" class="footer-link" title="Канал обновлений" target="_blank" rel="noopener">
+          <span class="footer-icon">📢</span>
+          <span class="footer-text">Канал</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
