@@ -80,7 +80,7 @@ mkdocs serve
 
 Если у вас есть вопросы по документации:
 
-- 📚 [База знаний](https://your-knowledge-base.com)
+- 📚 [База знаний](https://skand21.github.io/KITON-DOCS)
 - 💬 [Поддержка в Telegram](https://t.me/kiton_support)
 - 🤖 [Бот KITON](https://t.me/tutor_auto_bot)
 - 🐛 [Сообщить об ошибке](https://github.com/your-repo/issues)

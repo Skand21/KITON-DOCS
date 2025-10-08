@@ -74,10 +74,8 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/skand21/KITON-DOCS
   last_updated: "2025-01-09"
-  css:
-    - extra.css
+  css: []
   js:
-    - javascripts/force-dark-theme.js
     - javascripts/auto-theme.js
     - javascripts/progress.js
     - javascripts/search-enhancement.js
