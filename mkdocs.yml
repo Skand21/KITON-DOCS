@@ -1,19 +1,20 @@
-site_name: Главная
+site_name: KITON
 site_description: Полная документация по Telegram-боту для организации взаимодействия между учениками, репетиторами и родителями
-site_author: Kiton Team
+site_author: KITON 
 site_url: https://skand21.github.io/KITON-DOCS
 
 # Репозиторий скрыт
 
 # Навигация
 nav:
-  - Главная: index.md
+  - Общая информация: index.md
   - FAQ: faq.md
   - Гайды:
     - Репетиторы: tutor-guide.md
     - Ученики: student-guide.md
     - Родители: parent-guide.md
   - База знаний:
+    - Общая информация: knowledge-base.md
     - Для репетиторов: knowledge-base-tutor.md
     - Для учеников: knowledge-base-student.md
     - Для родителей: knowledge-base-parent.md
@@ -73,7 +74,7 @@ extra:
       link: https://t.me/kiton_support
     - icon: fontawesome/brands/github
       link: https://github.com/skand21/KITON-DOCS
-  last_updated: "2025-01-09"
+  last_updated: "2025-01-10"
   css: []
   js:
     - javascripts/auto-theme.js
@@ -81,3 +82,4 @@ extra:
     - javascripts/search-enhancement.js
     - javascripts/color-picker.js
     - javascripts/hide-anchors.js
+    - javascripts/mobile-menu-fix.js
