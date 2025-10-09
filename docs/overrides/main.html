@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-<!-- Версия: 2025-01-10-v4 - Добавлена мобильная навигация -->
+<!-- Версия: 2025-01-10-v5 - Исправлена навигация и ошибки JavaScript -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Ищем кнопку гамбургер-меню
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: transform 0.3s ease;
             overflow-y: auto;
             z-index: 10001;
+            font-size: clamp(12px, 2.5vw, 16px);
         `;
         
         // Заголовок панели
@@ -130,65 +131,100 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Создаем структуру навигации
         const navigationItems = [
-            { title: 'Общая информация', url: 'index.html', icon: '🏠' },
-            { title: 'FAQ', url: 'faq/index.html', icon: '❓' },
-            { 
-                title: 'Гайды', 
+            { title: 'Общая информация', url: '/KITON-DOCS/', icon: '🏠' },
+            { title: 'FAQ', url: '/KITON-DOCS/faq/', icon: '❓' },
+            {
+                title: 'Гайды',
                 icon: '📖',
                 children: [
-                    { title: 'Репетиторы', url: 'tutor-guide/index.html', icon: '👨🏫' },
-                    { title: 'Ученики', url: 'student-guide/index.html', icon: '👨🎓' },
-                    { title: 'Родители', url: 'parent-guide/index.html', icon: '👨‍👩‍👧' }
+                    { title: 'Репетиторы', url: '/KITON-DOCS/tutor-guide/', icon: '👨🏫' },
+                    { title: 'Ученики', url: '/KITON-DOCS/student-guide/', icon: '👨🎓' },
+                    { title: 'Родители', url: '/KITON-DOCS/parent-guide/', icon: '👨‍👩‍👧' }
                 ]
             },
-            { 
-                title: 'База знаний', 
+            {
+                title: 'База знаний',
                 icon: '📚',
                 children: [
-                    { title: 'Общая информация', url: 'knowledge-base/index.html', icon: 'ℹ️' },
-                    { title: 'Для репетиторов', url: 'knowledge-base-tutor/index.html', icon: '👨🏫' },
-                    { title: 'Для учеников', url: 'knowledge-base-student/index.html', icon: '👨🎓' },
-                    { title: 'Для родителей', url: 'knowledge-base-parent/index.html', icon: '👨‍👩‍👧' }
+                    { title: 'Общая информация', url: '/KITON-DOCS/knowledge-base/', icon: 'ℹ️' },
+                    { title: 'Для репетиторов', url: '/KITON-DOCS/knowledge-base-tutor/', icon: '👨🏫' },
+                    { title: 'Для учеников', url: '/KITON-DOCS/knowledge-base-student/', icon: '👨🎓' },
+                    { title: 'Для родителей', url: '/KITON-DOCS/knowledge-base-parent/', icon: '👨‍👩‍👧' }
                 ]
             },
-            { title: 'Тарифы', url: 'tariffs/index.html', icon: '💳' }
+            { title: 'Тарифы', url: '/KITON-DOCS/tariffs/', icon: '💳' }
         ];
         
         // Функция создания пункта навигации
-        function createNavItem(item, level = 0) {
+        function createNavItem(item, level = 0, parentContainer = null) {
             const navItem = document.createElement('div');
+            navItem.className = 'nav-item';
             navItem.style.cssText = `
                 padding: 12px 20px;
                 cursor: pointer;
                 transition: all 0.2s ease;
                 padding-left: ${20 + level * 16}px;
-                font-size: ${level === 0 ? '16px' : '14px'};
+                font-size: ${level === 0 ? 'clamp(14px, 2.5vw, 16px)' : 'clamp(12px, 2.2vw, 14px)'};
                 font-weight: ${level === 0 ? '600' : '400'};
                 color: ${isDark ? 'var(--md-default-fg-color, #ffffff)' : 'var(--md-default-fg-color, #000000)'};
                 border-left: 3px solid transparent;
                 display: flex;
                 align-items: center;
                 gap: 8px;
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                line-height: 1.4;
+                min-height: 44px;
             `;
             
             // Проверяем, является ли это текущей страницей
-            const isActive = item.url && currentPath.includes(item.url.replace('.html', ''));
+            const isActive = item.url && (
+                currentPath === item.url || 
+                currentPath.startsWith(item.url + 'index.html')
+            );
             if (isActive) {
-                navItem.style.background = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
+                navItem.classList.add('active');
+                navItem.style.background = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)';
                 navItem.style.borderLeftColor = isDark ? 'var(--md-primary-fg-color, #2196f3)' : 'var(--md-primary-fg-color, #1976d2)';
+                navItem.style.fontWeight = '600';
             }
             
             navItem.innerHTML = `
-                <span style="font-size: 16px;">${item.icon}</span>
+                <span style="font-size: clamp(14px, 2.5vw, 18px);">${item.icon}</span>
                 <span>${item.title}</span>
+                ${item.children ? '<span style="margin-left: auto; font-size: 14px; transition: transform 0.2s ease;">▶</span>' : ''}
             `;
             
-            navItem.addEventListener('click', function() {
+            navItem.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Убираем выделение со ВСЕХ элементов (включая активные)
+                const allItems = navList.querySelectorAll('.nav-item');
+                allItems.forEach(el => {
+                    el.style.background = 'transparent';
+                    el.style.borderLeftColor = 'transparent';
+                    el.classList.remove('active');
+                });
+                
+                // Выделяем текущий элемент только если это не активная страница
+                if (!isActive) {
+                    this.style.background = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
+                    this.style.borderLeftColor = isDark ? 'var(--md-primary-fg-color, #2196f3)' : 'var(--md-primary-fg-color, #1976d2)';
+                }
+                
                 if (item.children) {
                     // Переключаем подменю
                     const submenu = navItem.nextElementSibling;
+                    const arrow = navItem.querySelector('span:last-child');
                     if (submenu && submenu.classList.contains('submenu')) {
-                        submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
+                        const isOpen = submenu.style.display !== 'none';
+                        submenu.style.display = isOpen ? 'none' : 'block';
+                        if (arrow) {
+                            arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+                        }
                     }
                 } else if (item.url) {
                     // Переходим на страницу
@@ -197,20 +233,25 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             navItem.addEventListener('mouseenter', function() {
-                if (!isActive) {
+                if (!isActive && !this.classList.contains('active')) {
                     this.style.background = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
                     this.style.borderLeftColor = isDark ? 'var(--md-primary-fg-color, #2196f3)' : 'var(--md-primary-fg-color, #1976d2)';
                 }
             });
             
             navItem.addEventListener('mouseleave', function() {
-                if (!isActive) {
+                if (!isActive && !this.classList.contains('active')) {
                     this.style.background = 'transparent';
                     this.style.borderLeftColor = 'transparent';
                 }
             });
             
-            navList.appendChild(navItem);
+            // Добавляем элемент в правильный контейнер
+            if (parentContainer) {
+                parentContainer.appendChild(navItem);
+            } else {
+                navList.appendChild(navItem);
+            }
             
             // Создаем подменю, если есть дочерние элементы
             if (item.children) {
@@ -218,11 +259,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 submenu.className = 'submenu';
                 submenu.style.cssText = `
                     display: none;
+                    background: ${isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)'};
                 `;
                 
+                // Проверяем, есть ли активная страница в подменю
+                let hasActiveChild = false;
                 item.children.forEach(child => {
-                    createNavItem(child, level + 1);
+                    // Проверяем, активна ли дочерняя страница
+                    if (child.url && (
+                        currentPath === child.url || 
+                        currentPath.startsWith(child.url + 'index.html')
+                    )) {
+                        hasActiveChild = true;
+                    }
+                    
+                    // Создаем дочерний элемент
+                    createNavItem(child, level + 1, submenu);
                 });
+                
+                // Если есть активная дочерняя страница, открываем подменю
+                if (hasActiveChild) {
+                    submenu.style.display = 'block';
+                    const arrow = navItem.querySelector('span:last-child');
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(90deg)';
+                    }
+                }
+                
+                // Добавляем подменю в правильный контейнер
+                if (parentContainer) {
+                    parentContainer.appendChild(submenu);
+                } else {
+                    navList.appendChild(submenu);
+                }
             }
         }
         
@@ -1471,7 +1540,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="footer-left">
       <h3 class="footer-title">KITON Documentation</h3>
       <div class="footer-meta">
-        <span class="footer-version">v1.3.0</span>
+        <span class="footer-version">v1.4.0</span>
         <span class="footer-date">Обновлено: {{ config.extra.last_updated or "2025-01-10" }}</span>
       </div>
     </div>
