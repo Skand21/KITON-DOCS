@@ -7,18 +7,53 @@ site_url: https://skand21.github.io/KITON-DOCS
 
 # Навигация
 nav:
-  - Общая информация: index.md
-  - FAQ: faq.md
-  - Гайды:
-    - Репетиторы: tutor-guide.md
-    - Ученики: student-guide.md
-    - Родители: parent-guide.md
-  - База знаний:
-    - Общая информация: knowledge-base.md
-    - Для репетиторов: knowledge-base-tutor.md
-    - Для учеников: knowledge-base-student.md
-    - Для родителей: knowledge-base-parent.md
-  - Тарифы: tariffs.md
+  - Главная: index.md
+  - 👨🏫 Для репетиторов:
+    - Обзор: tutor/index.md
+    - Начало работы: tutor/start.md
+    - Управление учениками: tutor/students.md
+    - Домашние задания: tutor/homework.md
+    - Расписание: tutor/schedule.md
+    - Статистика: tutor/statistics.md
+    - Система "Газики": tutor/gamification.md
+    - Тарифы: tutor/tariffs.md
+    - Партнерство: tutor/partnership.md
+    - FAQ: tutor/faq.md
+  - 👨🎓 Для учеников:
+    - Обзор: student/index.md
+    - Быстрый старт: student/start.md
+    - Домашние задания: student/homework.md
+    - Расписание: student/schedule.md
+    - Система "Газики": student/gamification.md
+    - Твой прогресс: student/progress.md
+    - Баланс и оплаты: student/balance.md
+    - Общение с репетитором: student/communication.md
+  - 👨‍👩‍👧 Для родителей:
+    - Обзор: parent/index.md
+    - Подключение к ребенку: parent/connect.md
+    - Контроль обучения: parent/monitoring.md
+    - Финансы: parent/finances.md
+    - Общение с репетитором: parent/communication.md
+    - Аналитика: parent/analytics.md
+    - Система "Газики": parent/gamification.md
+    - Уведомления: parent/notifications.md
+  - 💰 Продажные материалы:
+    - Кейсы успеха: sales/success-cases.md
+    - Сравнение с конкурентами: sales/competitors.md
+    - ROI калькулятор: sales/roi-calculator.md
+  - 🆘 Поддержка:
+    - Техническая поддержка: support/technical.md
+    - Обновления: support/updates.md
+    - Контакты: support/contacts.md
+    - Вебинары: support/webinars.md
+    - Демонстрации: support/demos.md
+    - Обзор обновлений: support/update-overview.md
+    - Обучение функциям: support/feature-training.md
+    - Примеры наград: support/rewards-examples.md
+    - Шаблоны: support/templates.md
+  - 📋 Обновления: updates.md
+  - 🆘 Поддержка: support.md
+  - ❓ FAQ: faq.md
 
 # Тема
 theme:
